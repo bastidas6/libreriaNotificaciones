@@ -29,14 +29,14 @@ public class Aplicacion {
 		//Acá le pedimos al usuario que mensaje quiere enviar.
 
 		System.out.println("Cuál es el mensaje que quiere enviar?");
-		mensaje = teclado1.next();
+		mensaje = teclado1.nextLine();
         
 		//Acá le pedimos el medio por el cual quiere enviar el mensaje
 		System.out.println("opción 1: Facebook");
 		System.out.println("opción 2: Correo personal");
 		System.out.println("opción 3: Correo empresarial");
 		System.out.println("opción 4: SMS");
-		System.out.println("opción 5: SMS y Facebook");
+		System.out.println("opción 5: Correo personal, correo empresarial y facebook");
         
 		
 		//Acá verificamos que la opción sea válida
@@ -67,8 +67,8 @@ public class Aplicacion {
 
 			//Aquí hicimos un caso hipotético dado el caso de que el usuario quiera enviar el mensaje por Facebook o SMS
 			case "5":
-				Notificador notificacion4 = new NotificadorSMS(
-						new NotificadorFacebook(new EnviarNotificacion("\n" + mensaje)));
+				Notificador notificacion4 = new NotificadorCorreoPersonal(
+						new NotificadorCorreoEmpresarial(new NotificadorFacebook(new EnviarNotificacion("\n" + mensaje))));
 				System.out.println(notificacion4.enviar());
 				break;
 
